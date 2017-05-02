@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_centerHorizontal="true"
+    android:layout_centerInParent="true"
+    tools:context="com.sample.sample.activities.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/light_gray">
+
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/light_gray"
+            android:src="@drawable/ic_search"
+            android:clickable="true" />
+
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/search_button"
+            android:hint="Enter a location..."
+            android:background="@color/light_gray"
+            style="@style/EditTextStyle" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/search_error"
+        android:layout_below="@id/search_layout"
+        android:layout_marginTop="8dp"
+        android:text="Error finding weather data"
+        android:visibility="gone"
+        style="@style/TextViewErrorStyle"/>
+
+    <ScrollView
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_layout">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/last_updated"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    style="@style/TextViewSmallDataStyle"/>
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/last_updated"
+                style="@style/TextViewCityStyle"/>
+
+            <RelativeLayout
+                android:id="@+id/temperature_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/city">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/weather_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp" />
+
+                <TextView
+                    android:id="@+id/temperature"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/weather_icon"
+                    style="@style/TextViewTemperatureStyle"/>
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/weather_icon"
+                    android:layout_below="@id/temperature"
+                    android:textStyle="bold"
+                    style="@style/TextViewDataStyle"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/label_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/temperature_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Wind:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Gusts:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Humidity:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Pressure:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Visibility:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Sunrise:"
+                    style="@style/TextViewLabelStyle"/>
+
+                <TextView
+                    android:text="Sunset:"
+                    style="@style/TextViewLabelStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/data_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/label_layout"
+                android:layout_below="@id/temperature_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/wind"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/gusts"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/humidity"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/pressure"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/visibility"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/sunrise"
+                    style="@style/TextViewDataStyle"/>
+
+                <TextView
+                    android:id="@+id/sunset"
+                    style="@style/TextViewDataStyle"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyle" />
+</RelativeLayout>
